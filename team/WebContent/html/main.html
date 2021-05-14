@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>강아지 왕국</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+
+    <!-- update the version number as needed -->
+    <script src="/__/firebase/5.5.8/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/5.5.8/firebase-auth.js"></script>
+    <script src="/__/firebase/5.5.8/firebase-database.js"></script>
+    <script src="/__/firebase/5.5.8/firebase-messaging.js"></script>
+    <script src="/__/firebase/5.5.8/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <!--header-->
+    <div class="header row">
+
+        <div class="main-top">
+            <div class="top h-row">
+                <a href="#" class="logo"><img src="../images/puppylogo.png" class="img" /></a>
+                <div class="search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <p>|</p>
+                    <p class="search-info">루테인</p>
+
+
+                </div>
+                <ul class="gnb">
+
+                    <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>로그인</a></li>
+                    <li><a href="#"><i class="fa fa-user-o" aria-hidden="true"></i>회원가입</a></li>
+                    <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>장바구니</a></li>
+                    <li><a href="#"><i class="fa fa-headphones" aria-hidden="true"></i>고객센터</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navi-bar">
+            <div class="navi h-row">
+                <ul class="nav">
+                    <li class="ham rig-first"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+                    <li><a class="rig-ma lef-ma" href="#">사료</a></li>
+                    <li><a class="rig-ma" href="#">간식</a></li>
+                    <li><a class="rig-ma" href="#">영양제</a></li>
+                    <li><a class="rig-ma" href="#">목욕/미용</a></li>
+                    <li><a class="rig-ma" href="#">배변/위생</a></li>
+                    <li><a class="rig-ma" href="#">식기/집/이동장</a></li>
+                    <li><a class="rig-ma" href="#">패션/외출</a></li>
+                    <li><a href="#">장난감</a></li>
+                </ul>
+                <div id="modal1" class="menu_modal clear"></div>
+                <div id="modal2" class="menu_modal clear"></div>
+                <div id="modal3" class="menu_modal clear"></div>
+                <div id="modal4" class="menu_modal clear"></div>
+                <div id="modal5" class="menu_modal clear"></div>
+                <!--식기/홈-->
+                <div id="modal6" class="menu_modal clear">
+                    <div class="mo6_left">
+                        <div class="mo6_left_tit title">
+
+                        </div>
+                        <ul class="mo6_list1 mo6_ul">
+
+                        </ul>
+                    </div>
+                    <div class="mo6_right">
+                        <div class="mo6_right_tit title">
+
+                        </div>
+                        <ul class="mo6_list2 mo6_ul">
+
+                        </ul>
+                    </div>
+
+                </div>
+                <!--패션-->
+                <div id="modal7" class="menu_modal clear">
+                    <div class="mo7_left">
+                        <div class="mo7_left_tit title">
+
+                        </div>
+                        <ul class="mo7_list1 mo7_ul">
+
+                        </ul>
+                    </div>
+                    <div class="mo7_right">
+                        <div class="mo7_right_tit title">
+
+                        </div>
+                        <ul class="mo7_list2 mo7_ul">
+
+                        </ul>
+                    </div>
+                </div>
+
+                <ul id="modal8" class="menu_modal toy clear"></ul>
+                <!--장난감-->
+            </div>
+        </div>
+    </div>
+
+    <!--section-->
+    <div class="section row">
+        <!--메인배너-->
+        <div class="main-title">
+
+            <ul class="banner" id="slide_ul">
+
+                <li class="slide" id="slide1" data-name="할인이벤트" data-link="#">
+                    <div class="main h-row">
+                        <div class="main-block">
+                            <div class="block-copy txt_ani"> 할인 event</div>
+                            <h3 class="txt_ani"><span>쌀쌀해진 날씨!</span><br />티아라 펫 의상으로 극복!</h3>
+                            <p class="txt_ani">귀여운 디자인과 따뜻한 털 소재<br />
+                                티아라펫 할인 행사 </p>
+                        </div>
+                        <div class="ban_img">
+                            <img src="../images/banner/ban1.png" alt="">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="slide" id="slide2" data-name="증정이벤트" data-link="#">
+                    <div class="main h-row">
+                        <div class="main-block">
+                            <div class="block-copy"> 증정 event</div>
+                            <h3><span>로얄 캐닌 미니 인도어 8.7kg</span><br />런칭 기념 증정행사</h3>
+                            <p>미니 인도어 어덜트, 퍼피8.7kg 구매시<br />
+                                대형담요 + 펫 식기가 공짜</p>
+                        </div>
+                        <div class="ban_img">
+                            <img src="../images/banner/ban2.png" alt="">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="slide" id="slide3" data-name="MD기획전" data-link="#">
+                    <div class="main h-row">
+                        <div class="main-block">
+                            <div class="block-copy"> MD기획전</div>
+                            <h3><span>내 아이를 위한  </span><br />안락한 보금자리 데이지펫</h3>
+                            <p>실용, 감성디자인과 설계를 자랑하는 방석과 하우스</p>
+                        </div>
+                        <div class="ban_img">
+                            <img src="../images/banner/ban3.png" alt="">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="slide" id="slide4" data-name="신상품기획전" data-link="#">
+                    <div class="main h-row">
+                        <div class="main-block">
+                            <div class="block-copy">신상품기획전</div>
+                            <h3><span>하림그룹에서 엄선한</span><br />100% 휴먼그레이드 사료</h3>
+                            <p>더리얼 최대 38% 파격할인행사 진행중
+                            </p>
+                        </div>
+                        <div class="ban_img">
+                            <img src="../images/banner/ban4.png" alt="">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="slide" id="slide5" data-name="프리미엄왕국" data-link="#">
+                    <div class="main h-row">
+                        <div class="main-block">
+                            <div class="block-copy"> 프리미엄왕국</div>
+                            <h3><span>휴먼그레이드</span>
+                                <span class="pink_bold">고단백 저칼로리 간식</span>
+                                <br />한우 불리스틱</h3>
+                            <p> 한우 불리스틱 최대 20% 할인행사 진행중!</p>
+                        </div>
+                        <div class="ban_img">
+                            <img src="../images/banner/ban5.png" alt="">
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+
+            <ul class="main-navi">
+                <!--               <li>할인이벤트</li>
+                <li>증정이벤트</li>
+                <li>MD 기획전</li>
+                <li>신상품 기획전</li>
+                <li class="none-bor">프리미엄왕국</li> -->
+            </ul>
+
+
+
+
+
+        </div>
+
+
+
+        <!--이벤트배너-->
+        <ul class="evbanner h-row">
+            <li>
+                <div class="evbox">
+
+                    <div class="ev-txt">
+                        <p class="ev_ani">신규회원 이벤트</p>
+                        <h4 class="ev_ani">3만원 이상 구매시 <br />사은품</h4>
+                        <p class="arrow ev_ani"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                    </div>
+                    <div class="evimg"><img src="../images/banner_row/row1.jpg" /></div>
+                </div>
+            </li>
+            <li>
+                <div class="evbox">
+
+                    <div class="ev-txt">
+                        <p class="ev_ani">한정특가 이벤트</p>
+                        <h4 class="ev_ani">로투스 치킨레시피 </h4>
+                        <p class="arrow ev_ani"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                    </div>
+                    <div class="evimg"><img src="../images/banner_row/row2.jpg" /></div>
+                </div>
+            </li>
+            <li class="ev-rig">
+                <div class="evbox">
+
+                    <div class="ev-txt">
+                        <p class="ev_ani">제로마진</p>
+                        <h4 class="ev_ani">하림 더리얼 </h4>
+                        <p class="arrow ev_ani"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                    </div>
+                    <div class="evimg"><img src="../images/banner_row/row3.jpg" /></div>
+                </div>
+            </li>
+
+        </ul>
+
+        <!----------베스트상품--------------->
+        <div class="bestbar h-row">
+            <div class="hr1">
+                <hr class="hr_first" />
+                <hr />
+            </div>
+            <div class="best-txt">
+                <h3><i class="fa fa-trophy" aria-hidden="true"></i><br />
+                    베스트셀러</h3>
+                <!-- <p>안국건강 베스트셀러 상품입니다.</p> -->
+            </div>
+            <div class="hr1 best-rig">
+                <hr class="hr_first" />
+                <hr />
+            </div>
+        </div>
+
+        <!------베스트상품 박스------->
+        <div class="best-prod h-row">
+            <p>강아지왕국 베스트셀러 상품입니다.</p>
+            <ul class="best-product">
+                <!-- <li>
+                    <div class="best-title">BEST1</div>
+                    <div class="best-img">
+                        <div class="best_imgbox">
+                            <img src="../images/best/can.jpg" />
+                            <img src="../images/best/cat2.jpg" class="best_hover_img">
+                        </div>
+
+                        <div class="best_cart best_icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </div>
+                        <div class="cart_tip" id="cart_tooltip">장바구니
+                            <div class="tip_arrow"></div>
+                        </div>
+                        <div class="best_heart best_icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                        <div class="cart_tip heart_tip">찜하기
+                            <div class="tip_arrow hear_arrow"></div>
+                        </div>
+
+
+                    </div>
+                    <div class="bestblock">
+                        <h3>사조옵티원 강아지용
+                            <span class="best_sp">순살닭고기</span></h3>
+                        <hr />
+                        <p>
+                            <span class="le-ma"><del>2,000원</del></span> <span>1,350원</span>
+                        </p>
+                    </div>
+
+
+
+                </li>
+
+                <li>
+                    <div class="best-title">BEST2</div>
+                    <div class="best-img">
+                        <div class="best_imgbox">
+                            <img src="../images/best/food.jpg" />
+                            <img src="../images/best/food2.jpg" class="best_hover_img" />
+                        </div>
+                        <div class="best_cart best_icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                        <div class="cart_tip" id="cart_tooltip">장바구니
+                            <div class="tip_arrow"></div>
+                        </div>
+                        <div class="best_heart best_icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+
+                        <div class="cart_tip heart_tip">찜하기
+                            <div class="tip_arrow hear_arrow"></div>
+                        </div>
+                    </div>
+                    <div class="bestblock">
+                        <h3>아페토 강아지용 원목식탁1구</h3>
+                        <hr />
+                        <p>
+                            <span class="le-ma"><del>35,000원 </del></span> <span>28,000원</span>
+                        </p>
+                    </div>
+                
+
+                </li>
+
+                <li>
+                    <div class="best-title">BEST3</div>
+                    <div class="best-img">
+                        <div class="best_imgbox">
+                            <img src="../images/best/hat.jpg" />
+                            <img src="../images/best/hat2.jpg" class="best_hover_img" />
+                        </div>
+                        <div class="best_cart best_icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                        <div class="cart_tip" id="cart_tooltip">장바구니
+                            <div class="tip_arrow"></div>
+                        </div>
+                        <div class="best_heart best_icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+
+                        <div class="cart_tip heart_tip">찜하기
+                            <div class="tip_arrow hear_arrow"></div>
+                        </div>
+                    </div>
+                    <div class="bestblock">
+                        <h3>X-mas 줄무늬 꼬깔 머리핀 <span class="best_sp">강아지용</span></h3>
+                        <hr />
+                        <p>
+                            <span class="le-ma"><del>1,500원</del></span> <span>1,300원</span>
+                        </p>
+                    </div>
+                
+
+                </li>
+
+                <li>
+                    <div class="best-title">BEST4</div>
+                    <div class="best-img">
+                        <div class="best_imgbox">
+                            <img src="../images/best/multi.jpg" />
+                            <img src="../images/best/multi2.jpg" class="best_hover_img" />
+                        </div>
+                        <div class="best_cart best_icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                        <div class="cart_tip" id="cart_tooltip">장바구니
+                            <div class="tip_arrow"></div>
+                        </div>
+                        <div class="best_heart best_icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+
+                        <div class="cart_tip heart_tip">찜하기
+                            <div class="tip_arrow hear_arrow"></div>
+                        </div>
+                    </div>
+                    <div class="bestblock">
+                        <h3>베게 세븐멀티 델탈본 <span class="best_sp">강아지용 껌</span> </h3>
+                        <hr />
+                        <p>
+                            <span class="le-ma"><del>6,500원</del></span> <span>5,750원</span>
+                        </p>
+                    </div>
+
+                </li>
+
+                <li>
+                    <div class="best-title">BEST5</div>
+                    <div class="best-img">
+                        <div class="best_imgbox">
+                            <img src="../images/best/powder.jpg" />
+                            <img src="../images/best/powder2.jpg" class="best_hover_img" />
+                        </div>
+                        <div class="best_cart best_icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                        <div class="cart_tip" id="cart_tooltip">장바구니
+                            <div class="tip_arrow"></div>
+                        </div>
+                        <div class="best_heart best_icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
+
+                        <div class="cart_tip heart_tip">찜하기
+                            <div class="tip_arrow hear_arrow"></div>
+                        </div>
+                    </div>
+                    <div class="bestblock">
+                        <h3>더독 소간 수제파우더 강아지용</h3>
+                        <hr />
+                        <p>
+                            <span class="le-ma"><del>7,500원</del></span> <span>6900원</span>
+                        </p>
+                    </div>
+
+                </li> -->
+
+
+
+            </ul>
+        </div>
+
+
+
+        <!--MD추천상품-->
+
+
+        <div class="recommend row">
+            <div class="rec-wrap  h-row">
+                <div class="rec-titlebox">
+                    <div class="rec-div rec-hr-left">
+                        <hr class="rec_f_hr" />
+                        <hr />
+                    </div>
+                    <div class="rec-div rec-title">
+                        <i class="fa fa-star" aria-hidden="true"></i><br />
+                        <h3>MD추천상품</h3>
+                    </div>
+                    <div class="rec-div rec-hr-right">
+                        <hr class="rec_f_hr" />
+                        <hr />
+                    </div>
+                </div>
+
+                <p class="rec-info">강아지왕국에서 추천하는 상품입니다.</p>
+
+                <div class="rec-firstrow">
+                    
+                    <div class="pink square"><img src="../images/rec/rec_first.png" /></div>
+                    <div class="pink-block rec_text">
+                        <h3>작품 강아지패드50매</h3>
+                        <hr />
+                        <p>천연순수펄프 사용으로<br />
+                            반려동물의 아토피, 그외 피부염에 무해합니다.
+                        </p>
+                    </div>
+
+                    <div class="blue square"><img src="../images/rec/rec_second.jpg" /></div>
+                    <div class="blue-block rec_text">
+                        <h3>이츠독 강아지용 캥거루 슬링백 </h3>
+                        <hr />
+                        <p>
+                            견주와 밀착되는 형식으로<br />
+                            가방을 불안해하는 아이들도 편안해 합니다.
+                        </p>
+                    </div>
+
+                    <div class="green square"><img src="../images/rec/rec_third.png" /></div>
+                    <div class="green-block rec_text">
+                        <h3>ANF 유기농 연어 감자 </h3>
+                        <hr />
+                        <p>
+                            화학첨가물을 사용하지 않고<br />
+                            친환경 방법으로 재배, 수확한 원료를 사용하여 만들었습니다.
+                    </div>
+
+                    <div class="grass square"><img src="../images/rec/rec_fourth.jpg" /></div>
+                    <div class="grass-block rec_text">
+                        <h3>이츠독 강아지용 머피후리스 집업 점퍼 </h3>
+                        <hr />
+                        <p>
+                            지퍼에 털이 끼지 않는 "바람막이"처리와<br />
+                            5mm 극세사 안감이 있는 고급 후리스입니다.
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!--상품목록-->
+        <div class="rec-circles row">
+            <div class="rec-cir-wrap h-row">
+                <ul class="rec-cir-list">
+                    <!-- <li>
+                        <div class="rec-cir-img">
+                            <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir1.png" class="img"/>
+                        </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir2.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir3.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir4.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li class="cir-rig-ma">
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir5.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+
+                    첫째
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir6.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir7.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir8.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir9.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li class="cir-rig-ma">
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir10.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    둘째
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir11.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir12.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir13.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li>
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir14.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li>
+                    <li class="cir-rig-ma">
+                        <div class="rec-cir-img">
+                                <div class="rec_imgbx">
+                            <img src="../images/rec/rec_cir15.png" />
+                            </div>
+                        </div>
+                        <p>아이세이프 루테인</p>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--이서진배너-->
+    <div class="middle-banner row">
+        <span>내 강아지는 강아지왕국에서 챙기세요</span>
+    </div>
+    <!--AG.LOOK-->
+    <div class="look row">
+        <div class="look-wrap h-row">
+            <h2 class="eng">Dog kingdom's story</h2>
+            <div class="look-box">
+                <div class="box-left">
+                    <!-- <img src="../images/look1.jpg" /> -->
+                    <div class="look_bt look_le_bt">자세히보기</div>
+                </div>
+                <div class="box-right">
+                    <div class="box-right-top">
+                            <div class="look_bt look_ri_t_bt">자세히보기</div> </div>
+                    <div class="box-right-bot">
+                            <div class="look_bt look_ri_b_bt">자세히보기</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--instagram-->
+    <div class="insta row">
+        <div class="insta-wrap h-row">
+            <h2 class="eng">INSTAGRAM</h2>
+            <ul class="insta-list">
+                <li><a href="https://www.instagram.com/explore/tags/%EA%B0%95%EC%95%84%EC%A7%80%EC%99%95%EA%B5%AD/">
+                        <div class="insta-img">
+                            <img src="../images/insta1.jpg" class="img" />
+                        <div class="insta_over">
+                            <p><i class="fa fa-heart" aria-hidden="true"></i> 21</p>
+                            <p><i class="fa fa-comment" aria-hidden="true"></i>0</p>
+                        </div>
+                        </div>
+                    </a></li>
+                <li><a href="https://www.instagram.com/explore/tags/%EA%B0%95%EC%95%84%EC%A7%80%EC%99%95%EA%B5%AD/">
+                        <div class="insta-img"><img src="../images/insta2.jpg" class="img" />
+                            <div class="insta_over">
+                                    <p><i class="fa fa-heart" aria-hidden="true"></i> 36</p>
+                                    <p><i class="fa fa-comment" aria-hidden="true"></i>7</p>
+                                </div>
+                        </div>
+                    </a></li>
+                <li><a href="https://www.instagram.com/explore/tags/%EC%95%A0%EA%B2%AC%EC%98%B7/">
+                        <div class="insta-img"><img src="../images/insta3.jpg" class="img"/>
+                            <div class="insta_over">
+                                    <p><i class="fa fa-heart" aria-hidden="true"></i> 39</p>
+                                    <p><i class="fa fa-comment" aria-hidden="true"></i>3</p>
+                                </div>
+                        </div>
+                    </a></li>
+                <li><a href="https://www.instagram.com/dogskingdom_korea/">
+                        <div class="insta-img"><img src="../images/insta4.jpg" class="img" />
+                            <div class="insta_over">
+                                    <p><i class="fa fa-heart" aria-hidden="true"></i> 7</p>
+                                    <p><i class="fa fa-comment" aria-hidden="true"></i>0</p>
+                                </div>
+                        </div>
+                    </a></li>
+
+            </ul>
+        </div>
+    </div>
+    <!--bottom-->
+    <div class="footer row">
+        <div class="foot-navi">
+            <ul class="foot-nav h-row">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">이용안내</a></li>
+                <li><a href="#">고객센터</a></li>
+                <li><a href="#">대량구매/광고/제휴문의</a></li>
+            </ul>
+        </div>
+        <div class="admin">
+            <div class="admin-info h-row">
+                <div class="info-first">
+                    <div class="infofdet">
+                        <h3>(주) 서진에스앤디</h3>
+                        <p>대표자|우선정 사업자등록번호:128-86-56392</p>
+                        <p>통신판매업 신고|제 2018-경기파주-0610호 <span>사업자번호조회</span></p>
+                        <p>주소|경기 파주시 평화로 266-11</p>
+                        <p>Tel| 1688-7079</p>
+                        <p>Fax| 031-943-4178</p>
+                        <p>개인정보보호책임자|김민희 <span class="eng">Copyright &copy;</span> 강아지왕국 <span class="eng">All rights
+                                reserved.</span></p>
+                    </div>
+                </div>
+
+                <div class="info-second">
+                    <div class="infosdet">
+                        <h4>고객센터</h4>
+                        <h3>1688 8699</h3>
+                        <p>월~금 10:00~18:00</p>
+                        <p>토요일 10:00~12:00</p>
+                        <p>점심시간 12:00~13:00</p>
+                        <p>공휴일/주말 휴무</p>
+                    </div>
+                </div>
+
+                <div class="info-third">
+                    <ul class="infotdet">
+                        <li>
+                            <h4 class="eng">media</h4>
+                            <div class="infothimg"><img src="../images/ins2.jpg" />
+                            <div class="info_over">
+                                    <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h4 class="eng">brand</h4>
+                            <div class="infothimg"><img src="../images/ins1.jpg" />
+                                <div class="info_over">
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h4 class="eng">FAQ</h4>
+                            <div class="infothimg"><img src="../images/ins3.jpg" />
+                                <div class="info_over">
+                                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
